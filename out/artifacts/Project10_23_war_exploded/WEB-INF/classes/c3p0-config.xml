@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <named-config name="mvcApp">
+        <property name="user">HPK</property>
+        <property name="password">123456</property>
+        <property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
+        <property name="jdbcUrl">jdbc:oracle:thin:@127.0.0.1:1521:orcl</property>
+
+        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireIncrement">5</property>
+        <!--初始化时获取十个连接，取值应在minPoolSize与maxPoolSize之间 -->
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">10</property>
+        <property name="maxPoolSize">50</property>
+
+        <!--根据一定的时间间隔检查连接池的连接数量 单位为秒-->
+        <property name="idleConnectionTestPeriod">60</property>
+    </named-config>
+</c3p0-config>

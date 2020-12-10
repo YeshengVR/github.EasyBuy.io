@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.Project.EasyBuy.User.Dao.IUserDao">
+
+    <!-- 登录 -->
+    <select id="login" resultType="com.Project.EasyBuy.User.Entry.User" parameterType="com.Project.EasyBuy.User.Entry.User">
+        select
+        id,
+        username,
+        password
+        from EASYBUY_USER where PASSWORD=#{password} and  (MOBILE=#{username} or USERNAME = #{username} or EMAIL = #{username})
+    </select>
+    <!-- 注册 -->
+    <insert id="register" parameterType="com.Project.EasyBuy.User.Entry.User">
+        insert into EASYBUY_USER values (EASYBUY_USER_ID_SEQ.nextval,#{loginname},#{username},#{password},#{sex,jdbcType=DECIMAL},#{identitycode},#{email},#{mobile},default,#{phone})
+    </insert>
+    <select id="isrepeat" resultType="integer" parameterType="com.Project.EasyBuy.User.Entry.User">
+        select count(1) from EASYBUY_USER where  #{column} = #{name}
+    </select>
+</mapper>
